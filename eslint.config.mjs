@@ -6,6 +6,9 @@ import withNuxt from "./.nuxt/eslint.config.mjs";
 export default withNuxt(
   antfu({
     type: "app",
+    ignores: [
+      "assets/css/main.css",
+    ],
     vue: true,
     typescript: true,
     formatters: true,
