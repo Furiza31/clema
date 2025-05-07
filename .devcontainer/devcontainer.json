@@ -1,0 +1,39 @@
+{
+  "name": "CLEMA Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "postCreateCommand": "npm install",
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "octref.vetur",
+        "oderwat.indent-rainbow",
+        "PKief.material-icon-theme",
+        "github.copilot",
+        "github.copilot-chat",
+        "usernamehw.errorlens",
+        "whizkydee.material-palenight-theme",
+        "dbaeumer.vscode-eslint",
+        "yoavbls.pretty-ts-errors",
+        "chrisdias.promptboost",
+        "bradlc.vscode-tailwindcss",
+        "meganrogge.template-string-converter",
+        "fabiospampinato.vscode-terminals",
+        "vitest.explorer",
+        "anseki.vscode-color",
+        "serhioromano.vscode-gitflow",
+        "christian-kohler.npm-intellisense"
+      ],
+      "settings": {
+        "volar.takeOverMode.enabled": true
+      }
+    }
+  }
+}
