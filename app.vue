@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-primary">
-    Primary
-  </button>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
