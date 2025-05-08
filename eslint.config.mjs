@@ -8,6 +8,7 @@ export default withNuxt(
     type: "app",
     ignores: [
       "assets/css/main.css",
+      "**/migrations/*",
     ],
     vue: true,
     typescript: true,
