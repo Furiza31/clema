@@ -5,18 +5,19 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     "@nuxt/eslint",
-    "nuxt-lucide-icons",
+    "@nuxtjs/color-mode",
+    "@nuxt/icon",
   ],
+  css: ["~/assets/css/main.css"],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   eslint: {
     config: {
       standalone: false,
     },
   },
-  css: ["~/assets/css/main.css"],
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  lucide: {
-    namePrefix: "Icon",
+  colorMode: {
+    dataValue: "theme",
   },
 });

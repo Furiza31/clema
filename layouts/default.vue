@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-full w-full flex-col">
-    <AppNavBar />
+    <BaseHeader />
     <main class="h-full w-full">
       <slot />
     </main>

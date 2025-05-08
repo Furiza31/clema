@@ -7,6 +7,7 @@
     </div>
     <div class="navbar-center hidden lg:flex" />
     <div class="navbar-end">
+      <BaseThemeSelector />
       <a class="btn btn-primary">Sign in</a>
     </div>
   </div>
