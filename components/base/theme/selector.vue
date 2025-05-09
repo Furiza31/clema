@@ -3,13 +3,14 @@ import { themes } from "./themes";
 
 const colorMode = useColorMode();
 
-const activeTheme = computed({
-  get() {
-    return colorMode.value;
-  },
-  set(value: string) {
-    colorMode.preference = value;
-  },
+const activeTheme = ref("");
+
+onMounted(() => {
+  activeTheme.value = colorMode.value;
+});
+
+watch(activeTheme, (newTheme) => {
+  colorMode.preference = newTheme;
 });
 </script>
 
@@ -21,7 +22,8 @@ const activeTheme = computed({
     <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-1 w-52 p-2 shadow-2xl h-80 overflow-y-auto">
       <li v-for="theme in themes" :key="theme">
         <label
-          class="btn btn-block justify-start" :class="{
+          class="btn btn-block justify-start"
+          :class="{
             'btn-primary text-primary-content': activeTheme === theme,
             'btn-ghost text-base-content': activeTheme !== theme,
           }"

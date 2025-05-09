@@ -8,7 +8,9 @@
     <div class="navbar-center hidden lg:flex" />
     <div class="navbar-end">
       <BaseThemeSelector />
-      <a class="btn btn-primary">Sign in</a>
+      <NuxtLink to="/auth/login" class="btn btn-primary">
+        Sign in
+      </NuxtLink>
     </div>
   </div>
 </template>

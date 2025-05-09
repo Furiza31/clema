@@ -14,7 +14,6 @@
       "extensions": [
         "Vue.volar",
         "antfu.iconify",
-        "octref.vetur",
         "oderwat.indent-rainbow",
         "PKief.material-icon-theme",
         "github.copilot",

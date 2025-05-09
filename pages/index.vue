@@ -9,9 +9,9 @@
           Your Life Management Solution! <br>
           A simple and easy to use life management app that helps you keep track of your tasks, notes, and goals.
         </p>
-        <button class="btn btn-primary">
-          Sign up
-        </button>
+        <NuxtLink to="/auth/register" class="btn btn-primary">
+          Sign in
+        </NuxtLink>
       </div>
     </div>
   </div>
