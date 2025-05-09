@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { toTypedSchema } from "@vee-validate/zod";
-import { createAuthClient } from "better-auth/client";
-import { useRouter } from "vue-router";
 import * as z from "zod";
 
-const loading = ref(false);
-const authClient = createAuthClient();
-const router = useRouter();
-const authError = ref<string | null>(null);
+const authStore = useAuthStore();
+const error = ref<string | null>(null);
 
 const schema = z.object({
   name: z.string().min(2),
@@ -27,20 +23,16 @@ const { handleSubmit, errors } = useForm({
 });
 
 const submit = handleSubmit(async (values) => {
-  loading.value = true;
-  await authClient.signUp.email({
-    email: values.email,
-    name: values.name,
-    password: values.password,
-  }, {
-    onError: (error) => {
-      authError.value = error.error.message;
-    },
-    onSuccess: () => {
-      router.push("/app/dashboard");
-    },
-  });
-  loading.value = false;
+  try {
+    await authStore.credentialRegister({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    });
+  }
+  catch (e) {
+    error.value = e as string;
+  }
 });
 </script>
 
@@ -80,16 +72,16 @@ const submit = handleSubmit(async (values) => {
             type="password"
           />
           <BaseButton
-            :is-loading="loading"
+            :is-loading="authStore.loading"
             class="btn-neutral mt-4"
             type="submit"
           >
             Continue
           </BaseButton>
-          <div v-if="authError" role="alert" class="alert alert-error">
+          <div v-if="error" role="alert" class="alert alert-error">
             <Icon name="material-symbols:error" size="24" />
             <span>
-              {{ authError }}
+              {{ error }}
             </span>
           </div>
         </form>

@@ -1,36 +1,23 @@
 <script setup lang="ts">
-import { createAuthClient } from "better-auth/client";
-
-import type { Providers } from "./providers";
-
-import { providers } from "./providers";
-
 const props = defineProps<{
   provider: Providers;
 }>();
-const loading = ref(false);
+
+const authStore = useAuthStore();
 
 const provider = providers[props.provider];
 
-const authClient = createAuthClient();
-
-async function signIn() {
-  loading.value = true;
-  await authClient.signIn.social({
-    provider: provider.provider as Providers,
-    callbackURL: "/app/dashboard",
-    errorCallbackURL: "/auth/error",
-  });
-  loading.value = false;
+async function handleButtonClick() {
+  await authStore.signIn(provider.provider as Providers);
 }
 </script>
 
 <template>
   <BaseButton
-    :is-loading="loading"
+    :is-loading="authStore.loading"
     class="btn-neutral"
     :icon="provider.icon"
-    @click="signIn"
+    @click="handleButtonClick"
   >
     {{ provider.name }}
   </BaseButton>
